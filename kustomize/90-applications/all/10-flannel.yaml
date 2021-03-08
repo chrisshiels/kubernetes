@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/chrisshiels/kubernetes.git
     targetRevision: HEAD
-    path: kustomize/flannel/all
+    path: kustomize/10-flannel/all
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
