@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: ingress-nginx
+bases:
+- ../stock
+patches:
+- patch.yaml
+#patchesJson6902:
+#- target:
+#    kind: Deployment
+#    name: ingress-nginx-controller
+#  patch: |-
+#    - op: replace
+#      path: /kind
+#      value: DaemonSet
+#- target:
+#    kind: Service
+#    name: ingress-nginx-controller
+#  patch: |-
+#    - op: add
+#      path: /spec/ports/0/nodePort
+#      value: 30080
+#    - op: add
+#      path: /spec/ports/1/nodePort
+#      value: 30443
