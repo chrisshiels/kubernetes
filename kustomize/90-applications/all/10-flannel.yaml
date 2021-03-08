@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: flannel
+  name: 10-flannel
   namespace: argocd
 spec:
   project: default

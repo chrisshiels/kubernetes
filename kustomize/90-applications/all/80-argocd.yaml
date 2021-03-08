@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx
+  name: 80-argocd
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/chrisshiels/kubernetes.git
     targetRevision: HEAD
-    path: kustomize/ingress-nginx/all
+    path: kustomize/argocd/all
   destination:
     server: https://kubernetes.default.svc
-    namespace: ingress-nginx
+    namespace: argocd

@@ -14,7 +14,4 @@ patches:
 #      path: /spec/type
 #      value: NodePort
 resources:
-- application-argocd.yaml
-- application-flannel.yaml
-- application-ingress-nginx.yaml
 - namespace.yaml
