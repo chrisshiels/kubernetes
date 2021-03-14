@@ -3,8 +3,9 @@ kind: Kustomization
 namespace: argocd
 bases:
 - ../stock
-patches:
-- patch.yaml
+resources:
+- ingress.yaml
+- namespace.yaml
 #patchesJson6902:
 #- target:
 #    kind: Service
@@ -13,5 +14,9 @@ patches:
 #    - op: replace
 #      path: /spec/type
 #      value: NodePort
-resources:
-- namespace.yaml
+#images:
+#- name: argoproj/argocd
+#  newName: quay.io/argoproj/argocd
+#- name: redis
+#  newName: quay.io/bitnami/redis
+#  newTag: '6.2'
