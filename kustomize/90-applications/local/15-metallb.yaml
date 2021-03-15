@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/chrisshiels/kubernetes.git
     targetRevision: HEAD
-    path: kustomize/15-metallb/all
+    path: kustomize/15-metallb/local
   destination:
     server: https://kubernetes.default.svc
     namespace: metallb-system
