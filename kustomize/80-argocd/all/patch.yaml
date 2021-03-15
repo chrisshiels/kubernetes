@@ -1,27 +1,11 @@
+# Fix:
+# 'StatefulSet volumeclaimtemplates added when base did not include it #504.'
+# https://github.com/kubernetes-sigs/kustomize/issues/504
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  labels:
-    app.kubernetes.io/instance: 80-argocd
-  name: argocd
+  name: argocd-application-controller
   namespace: argocd
-
-
----
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  labels:
-    app.kubernetes.io/instance: 80-argocd
-  name: applications.argoproj.io
-  namespace: argocd
-
----
-apiVersion: apiextensions.k8s.io/v1beta1
-kind: CustomResourceDefinition
-metadata:
-  labels:
-    app.kubernetes.io/instance: 80-argocd
-  name: appprojects.argoproj.io
-  namespace: argocd
+spec:
+  volumeClaimTemplates: []
