@@ -4,4 +4,7 @@ namespace: metallb-system
 commonLabels:
   app.kubernetes.io/instance: 15-metallb
 bases:
-- ../stock
+- ../all
+resources:
+- configmap.yaml
+- secret.yaml

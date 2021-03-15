@@ -4,4 +4,6 @@ namespace: ingress-nginx
 commonLabels:
   app.kubernetes.io/instance: 20-ingress-nginx
 bases:
-- ../stock
+- ../all
+patches:
+- patch.yaml

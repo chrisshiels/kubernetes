@@ -4,8 +4,6 @@ namespace: argocd
 commonLabels:
   app.kubernetes.io/instance: 80-argocd
 bases:
-- ../stock
+- ../all
 resources:
-- namespace.yaml
-patches:
-- patch.yaml
+- ingress.yaml

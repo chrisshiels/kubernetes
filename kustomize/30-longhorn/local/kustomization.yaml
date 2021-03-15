@@ -4,4 +4,6 @@ namespace: longhorn-system
 commonLabels:
   app.kubernetes.io/instance: 30-longhorn
 bases:
-- ../stock
+- ../all
+resources:
+- ingress.yaml
