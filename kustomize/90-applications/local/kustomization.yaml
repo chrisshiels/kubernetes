@@ -6,4 +6,5 @@ resources:
 - 15-metallb.yaml
 - 20-ingress-nginx.yaml
 - 30-longhorn.yaml
+- 50-monitoring.yaml
 - 80-argocd.yaml

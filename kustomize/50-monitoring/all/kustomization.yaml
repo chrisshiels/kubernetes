@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+# Not using commonLabels as
+# i.)   this updates resource labels *and* service selectors,
+# ii.)  but Prometheus created StatefulSets aren't visible to kustomization and
+#       so their pods are not processed by commonLabels,
+# iii.) and so these pods are not then visible to the corresponding services.
+#commonLabels:
+#  app.kubernetes.io/instance: 50-monitoring
+bases:
+- ../stock
+resources:
+- namespace.yaml
+patches:
+- patch.yaml
