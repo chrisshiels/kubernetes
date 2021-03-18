@@ -1,16 +1,20 @@
 ---
 apiVersion: v1
-kind: ConfigMap
+kind: Service
 metadata:
-  name: prometheus-grafana-test
+  name: prometheus-kube-prometheus-alertmanager
   namespace: monitoring
-data:
-  run.sh: |-
-    @test "Test Health" {
-      # Fix pod prometheus-grafana-test erroring.
-      sleep 30
-      url="http://prometheus-grafana/api/health"
+spec:
+  selector:
+    $patch: delete
 
-      code=$(wget --server-response --spider --timeout 10 --tries 1 ${url} 2>&1 | awk '/^  HTTP/{print $2}')
-      [ "$code" == "200" ]
-    }
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-prometheus
+  namespace: monitoring
+spec:
+  selector:
+    $patch: delete
