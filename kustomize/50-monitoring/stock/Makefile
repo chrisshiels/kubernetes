@@ -2,6 +2,7 @@ all:
 	helm -n monitoring template \
 		prometheus prometheus-community/kube-prometheus-stack \
 		--version 14.0.1 \
+		--include-crds \
 		--set alertmanager.ingress.enabled=True \
 		--set alertmanager.ingress.hosts='{alertmanager.local}' \
 		--set alertmanager.ingress.ingressClassName=nginx \
