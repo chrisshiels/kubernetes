@@ -1,0 +1,145 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-grafana
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    app.kubernetes.io/name: grafana
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-alertmanager
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    alertmanager: prometheus-kube-prometheus-alertmanager
+    app: alertmanager
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-coredns
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    k8s-app: kube-dns
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-kube-controller-manager
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    component: kube-controller-manager
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-kube-etcd
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    component: etcd
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-kube-proxy
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    k8s-app: kube-proxy
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-kube-scheduler
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    component: kube-scheduler
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-operator
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    app: kube-prometheus-stack-operator
+    release: prometheus
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-prometheus-prometheus
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    app: prometheus
+    prometheus: prometheus-kube-prometheus-prometheus
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-kube-state-metrics
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    app.kubernetes.io/name: kube-state-metrics
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-prometheus-node-exporter
+  namespace: monitoring
+spec:
+  selector:
+    $patch:
+      replace
+    app: prometheus-node-exporter
+    release: prometheus
