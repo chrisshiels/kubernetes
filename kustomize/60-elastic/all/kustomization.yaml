@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: longhorn-system
+namespace: elastic-system
 commonLabels:
-  app.kubernetes.io/instance: 30-longhorn
+  app.kubernetes.io/instance: 60-elastic
 bases:
 - ../stock
-resources:
-- resource.yaml
+patches:
+- patch.yaml
