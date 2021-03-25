@@ -2,15 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
 bases:
-- ../stock
-#patchesJSON6902:
-#- target:
-#    version: v1
-#    kind: Service
-#    name: prometheus-kube-prometheus-alertmanager
-#  path: patch-prometheus-kube-prometheus-alertmanager.yaml
-#- target:
-#    version: v1
-#    kind: Service
-#    name: prometheus-kube-prometheus-prometheus
-#  path: patch-prometheus-kube-prometheus-prometheus.yaml
+- ../all0
+patches:
+- patch.yaml

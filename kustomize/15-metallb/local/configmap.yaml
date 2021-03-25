@@ -4,6 +4,8 @@ kind: ConfigMap
 metadata:
   name: config
   namespace: metallb-system
+  labels:
+    app.kubernetes.io/instance: 15-metallb
 data:
   config: |
     address-pools:

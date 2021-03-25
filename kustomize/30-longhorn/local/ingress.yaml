@@ -4,6 +4,8 @@ kind: Ingress
 metadata:
   name: longhorn
   namespace: longhorn-system
+  labels:
+    app.kubernetes.io/instance: 30-longhorn
 spec:
   rules:
   - host: longhorn.local

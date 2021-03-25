@@ -1,5 +1,0 @@
-- op: replace
-  path: /spec/selector
-  value:
-    app: prometheus
-    prometheus: prometheus-kube-prometheus-prometheus
