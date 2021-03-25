@@ -7,4 +7,6 @@ resources:
 - 20-ingress-nginx.yaml
 - 30-longhorn.yaml
 - 50-monitoring.yaml
+- 60-elastic.yaml
+- 70-application.yaml
 - 80-argocd.yaml
