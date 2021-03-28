@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 resources:
-- 10-flannel.yaml
+- 10-calico.yaml
 - 15-metallb.yaml
 - 20-ingress-nginx.yaml
 - 30-longhorn.yaml

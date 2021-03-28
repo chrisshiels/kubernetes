@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 10-calico
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/chrisshiels/kubernetes.git
+    targetRevision: HEAD
+    path: kustomize/10-calico/local
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
