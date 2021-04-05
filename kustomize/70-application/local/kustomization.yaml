@@ -6,3 +6,4 @@ commonLabels:
 resources:
 - namespace.yaml
 - elastic.yaml
+- kafka.yaml
