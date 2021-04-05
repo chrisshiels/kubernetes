@@ -8,5 +8,6 @@ resources:
 - 30-longhorn.yaml
 - 50-monitoring.yaml
 - 60-elastic.yaml
+- 65-kafka.yaml
 - 70-application.yaml
 - 80-argocd.yaml
