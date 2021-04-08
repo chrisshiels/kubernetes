@@ -6,6 +6,7 @@ resources:
 - 15-metallb.yaml
 - 20-ingress-nginx.yaml
 - 30-longhorn.yaml
+- 35-local-path.yaml
 - 50-monitoring.yaml
 - 60-elastic.yaml
 - 65-kafka.yaml

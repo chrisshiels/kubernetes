@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 35-local-path
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/chrisshiels/kubernetes.git
+    targetRevision: HEAD
+    path: kustomize/35-local-path/local
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: local-path-storage
