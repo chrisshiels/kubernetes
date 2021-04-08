@@ -43,3 +43,37 @@ spec:
               name: https
         path: /
         pathType: ImplementationSpecific
+
+---
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: application
+spec:
+  version: 7.12.0
+  count: 3
+  elasticsearchRef:
+    name: application
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kibana
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+spec:
+  rules:
+  - host: kibana.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: application-kb-http
+            port:
+              name: https
+        path: /
+        pathType: ImplementationSpecific
