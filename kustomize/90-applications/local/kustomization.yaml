@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: argocd
 resources:
 - 10-calico.yaml
+- 12-sealedsecrets.yaml
 - 15-metallb.yaml
 - 20-ingress-nginx.yaml
 - 30-longhorn.yaml
