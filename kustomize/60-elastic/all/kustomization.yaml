@@ -1,9 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: elastic-system
-commonLabels:
-  app.kubernetes.io/instance: 60-elastic
 bases:
 - ../stock
-patches:
-- patch.yaml

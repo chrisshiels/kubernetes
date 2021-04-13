@@ -1,15 +1,3 @@
-# Fix:
-# 'StatefulSet volumeclaimtemplates added when base did not include it #504.'
-# https://github.com/kubernetes-sigs/kustomize/issues/504
----
-apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: argocd-application-controller
-  namespace: argocd
-spec:
-  volumeClaimTemplates: []
-
 ---
 apiVersion: v1
 kind: ConfigMap
