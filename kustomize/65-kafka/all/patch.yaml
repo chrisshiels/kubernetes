@@ -10,6 +10,5 @@ spec:
       - name: strimzi-cluster-operator
         env:
         - name: STRIMZI_NAMESPACE
-          $patch: delete
-        - name: STRIMZI_NAMESPACE
           value: '*'
+          $patch: replace
