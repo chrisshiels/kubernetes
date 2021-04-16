@@ -1,3 +1,27 @@
+# See:
+# https://www.elastic.co/guide/en/cloud-on-k8s/master/k8s-users-and-roles.html
+#
+# host$ mkdir filerealm
+# host$ touch filerealm/users filerealm/users_roles
+#
+# host$ sudo docker run \
+#         --rm \
+#         -v $(pwd)/filerealm:/usr/share/elasticsearch/config \
+#         docker.elastic.co/elasticsearch/elasticsearch:7.12.0 \
+#         bin/elasticsearch-users useradd fluentd -p fluentd -r superuser
+#
+# host$ kubectl -n application \
+#         create secret --dry-run=client \
+#                 generic filerealm --from-file ./filerealm -o yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: filerealm
+data:
+  users: Zmx1ZW50ZDokMmEkMTAkNmZpL2FHakhXaEFDNVgvSE5FZEhsLkVMVmNYYjBzTzVWSDJPNG03TjBUTWk5ZXBqUy9xL1cK
+  users_roles: c3VwZXJ1c2VyOmZsdWVudGQK
+
 ---
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
@@ -5,6 +29,9 @@ metadata:
   name: application
 spec:
   version: 7.12.0
+  auth:
+    fileRealm:
+    - secretName: filerealm
   nodeSets:
   - name: default
     count: 3
