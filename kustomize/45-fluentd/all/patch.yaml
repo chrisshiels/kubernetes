@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd
+  namespace: kube-system
+spec:
+  template:
+    spec:
+      containers:
+      - name: fluentd
+        env:
+          - name: FLUENT_ELASTICSEARCH_HOST
+            value: application-es-http.application
+          - name: FLUENT_ELASTICSEARCH_PORT
+            value: "9200"
+          - name: FLUENT_ELASTICSEARCH_SCHEME
+            value: https
+          - name: FLUENT_ELASTICSEARCH_SSL_VERIFY
+            value: "false"
+          - name: FLUENT_ELASTICSEARCH_USER
+            value: fluentd
+          - name: FLUENT_ELASTICSEARCH_PASSWORD
+            value: fluentd
+          - name: FLUENTD_SYSTEMD_CONF
+            value: disable
+          - name: LOGZIO_TOKEN
+            value: ThisIsASuperLongToken
+          - name: LOGZIO_LOGTYPE
+            value: kubernetes
