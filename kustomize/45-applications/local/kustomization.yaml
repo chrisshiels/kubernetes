@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+resources:
+- 10-calico.yaml
+- 10-flannel.yaml
+- 20-sealedsecrets.yaml
+- 30-metallb.yaml
+- 35-ingress-nginx.yaml
+- 40-argocd.yaml
+- 50-longhorn.yaml
+- 55-local-path.yaml
+- 60-elastic.yaml
+- 65-elastic.yaml
+- 70-fluentd.yaml
+- 80-monitoring.yaml
+- 90-kafka.yaml
+- 95-kafka.yaml

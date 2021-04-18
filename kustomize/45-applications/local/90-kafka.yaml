@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 20-ingress-nginx
+  name: 90-kafka
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/chrisshiels/kubernetes.git
     targetRevision: HEAD
-    path: kustomize/20-ingress-nginx/local
+    path: kustomize/90-kafka/local
   destination:
     server: https://kubernetes.default.svc
-    namespace: ingress-nginx
+    namespace: kafka-system

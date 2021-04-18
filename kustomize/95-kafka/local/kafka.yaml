@@ -2,7 +2,7 @@
 apiVersion: kafka.strimzi.io/v1beta1
 kind: Kafka
 metadata:
-  name: application
+  name: kafka
 spec:
   kafka:
     replicas: 3

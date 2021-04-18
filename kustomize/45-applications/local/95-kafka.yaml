@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 65-kafka
+  name: 95-kafka
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/chrisshiels/kubernetes.git
     targetRevision: HEAD
-    path: kustomize/65-kafka/local
+    path: kustomize/95-kafka/local
   destination:
     server: https://kubernetes.default.svc
-    namespace: kafka-system
+    namespace: kafka

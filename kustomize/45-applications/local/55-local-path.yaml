@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 15-metallb
+  name: 55-local-path
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/chrisshiels/kubernetes.git
     targetRevision: HEAD
-    path: kustomize/15-metallb/local
+    path: kustomize/55-local-path/local
   destination:
     server: https://kubernetes.default.svc
-    namespace: metallb-system
+    namespace: local-path-storage

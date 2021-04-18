@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 50-monitoring
+  name: 50-longhorn
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/chrisshiels/kubernetes.git
     targetRevision: HEAD
-    path: kustomize/50-monitoring/local
+    path: kustomize/50-longhorn/local
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: longhorn-system

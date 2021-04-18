@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 70-application
+  name: 80-monitoring
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/chrisshiels/kubernetes.git
     targetRevision: HEAD
-    path: kustomize/70-application/local
+    path: kustomize/80-monitoring/local
   destination:
     server: https://kubernetes.default.svc
-    namespace: application
+    namespace: monitoring
