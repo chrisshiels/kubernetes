@@ -23,6 +23,10 @@ spec:
             value: fluentd
           - name: FLUENTD_SYSTEMD_CONF
             value: disable
+          - name: FLUENT_ELASTICSEARCH_LOGSTASH_FORMAT
+            value: 'true'
+          - name: FLUENT_ELASTICSEARCH_LOGSTASH_PREFIX
+            value: logstash
           - name: LOGZIO_TOKEN
             value: ThisIsASuperLongToken
           - name: LOGZIO_LOGTYPE
