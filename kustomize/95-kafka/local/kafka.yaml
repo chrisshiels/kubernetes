@@ -30,6 +30,13 @@ spec:
       class: longhorn
       size: 10Gi
       deleteClaim: true
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+  kafkaExporter:
+    groupRegex: ".*"
+    topicRegex: ".*"
+  cruiseControl: {}
 
 ---
 apiVersion: kafka.strimzi.io/v1beta1
@@ -40,7 +47,35 @@ metadata:
     strimzi.io/cluster: kafka
 spec:
   partitions: 1
-  replicas: 1
+  replicas: 3
   config:
-    retention.ms: 7200000
-    segment.bytes: 1073741824
+    min.insync.replicas: 2
+
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaUser
+metadata:
+  name: user
+  labels:
+    strimzi.io/cluster: kafka
+
+---
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaConnect
+metadata:
+  name: connect
+  annotations:
+    strimzi.io/use-connector-resources: "true"
+spec:
+  version: 2.7.0
+  replicas: 3
+  bootstrapServers: kafka-kafka-bootstrap:9093
+  tls:
+    trustedCertificates:
+      - secretName: kafka-cluster-ca-cert
+        certificate: ca.crt
+  config:
+    group.id: connect
+    offset.storage.topic: connect-offsets
+    config.storage.topic: connect-configs
+    status.storage.topic: connect-status
