@@ -20,15 +20,15 @@ spec:
         tls: true
     storage:
       type: persistent-claim
-      class: longhorn
-      size: 10Gi
+      class: longhorn-onereplica
+      size: 5Gi
       deleteClaim: true
   zookeeper:
     replicas: 3
     storage:
       type: persistent-claim
-      class: longhorn
-      size: 10Gi
+      class: longhorn-onereplica
+      size: 5Gi
       deleteClaim: true
   entityOperator:
     topicOperator: {}

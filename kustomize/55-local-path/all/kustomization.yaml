@@ -3,3 +3,5 @@ kind: Kustomization
 namespace: local-path-storage
 bases:
 - ../stock
+patches:
+- patch.yaml

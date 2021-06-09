@@ -5,3 +5,5 @@ bases:
 - ../stock
 resources:
 - resource.yaml
+patches:
+- patch.yaml
