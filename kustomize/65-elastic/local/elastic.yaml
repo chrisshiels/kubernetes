@@ -6,21 +6,44 @@
 #
 # host$ sudo docker run \
 #         --rm \
-#         -v $(pwd)/filerealm:/usr/share/elasticsearch/config \
+#         -v $(pwd)/filerealm:/usr/share/elasticsearch/config:Z \
 #         docker.elastic.co/elasticsearch/elasticsearch:7.12.0 \
-#         bin/elasticsearch-users useradd fluentd -p fluentd -r superuser
+#         bin/elasticsearch-users useradd fluentd -p fluentd -r fluentd
 #
-# host$ kubectl -n elastic \
-#         create secret --dry-run=client \
-#                 generic filerealm --from-file ./filerealm -o yaml
+# host$ cat filerealm/users
+# fluentd:$2a$10$2dG4X0ouS.GkrAhz5muWLefVv8xbLc12HIKCPdgMZr.803hup0Eke
+# host$ cat filerealm/users_roles
+# fluentd:fluentd
+
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: filerealm
-data:
-  users: Zmx1ZW50ZDokMmEkMTAkNmZpL2FHakhXaEFDNVgvSE5FZEhsLkVMVmNYYjBzTzVWSDJPNG03TjBUTWk5ZXBqUy9xL1cK
-  users_roles: c3VwZXJ1c2VyOmZsdWVudGQK
+  name: usersandroles
+stringData:
+  users: |-
+    fluentd:$2a$10$2dG4X0ouS.GkrAhz5muWLefVv8xbLc12HIKCPdgMZr.803hup0Eke
+  users_roles: |-
+    fluentd:fluentd
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: roles
+stringData:
+  roles.yml: |-
+    fluentd:
+      cluster:
+      - 'monitor'
+      indices:
+      - names:
+        - 'logstash-*'
+        privileges:
+        - 'create'
+        - 'create_index'
+        - 'delete'
+        - 'write'
 
 ---
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -31,7 +54,9 @@ spec:
   version: 7.12.0
   auth:
     fileRealm:
-    - secretName: filerealm
+    - secretName: usersandroles
+    roles:
+    - secretName: roles
   nodeSets:
   - name: default
     count: 3
