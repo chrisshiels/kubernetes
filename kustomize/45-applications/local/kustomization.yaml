@@ -17,3 +17,4 @@ resources:
 - 80-monitoring.yaml
 - 90-kafka.yaml
 - 95-kafka.yaml
+- 99-hello-kubernetes.yaml
